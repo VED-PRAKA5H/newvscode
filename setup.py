@@ -22,7 +22,7 @@ setup(
     version = '0.0.1',
     author = 'ved',
     author_email = 'vihastvideos21@gmail.com',
-    packages = find_package(),
+    packages = find_packages(),
     install_requires = get_requirements('requirements.txt')
     )
     

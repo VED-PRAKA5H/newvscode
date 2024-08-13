@@ -15,15 +15,17 @@
 * without it people might have hard time to figuring out how to use
 * it's like recipe for setting up your project on someone else's computer
 
+
 3. # create src folder and build the package
     * in this create init.py file
     * ## why we use init.py
     * `Package Initialization`: When Python sees an init.py file inside a directory, it treats that directory as a package. It helps organize your code into logical units. 
     * `Namespace Package`:  If you have a large project split across multiple directories or locations, each having its own init.py, Python combines them all together when you import the package. This allows you to spread your code across different parts of your project without conflicts.m.
 
+
 4. # create requirements.txt
-    * ## -e stand for specifies that the package should be installed in editable mode.
-    * ## and . for current directory
+    * ## `-e` stand for specifies that the package should be installed in editable mode.
+    * ## and `.` for current directory
     * both are use in `pip` not in `conda` (for conda: Remove the -e . line)
 ```
 pandas
@@ -34,8 +36,22 @@ scikit-learn
 -e .
 ``` 
 
-5. # now run `python setup.py install` in cmd of youyour virtual environment
+
+5. ## now run `python setup.py install` in cmd of youyour virtual environment
    ## now you can use `pip freeze > requirements.txt` for conda `conda list --export > requirements.txt`
 
+
 # project stucture, logging and exceptionn handling 
+* ## create folder (components) in src folder then create following python file
+  * __init__.py
+  * data_ingestion.py `for data reading`
+  * data_transformation.py `for EDA`
+  * model_trainer.py `for Model training`
+
+    
+* ## now create folder (pipeline) in src folder then create following python file
+  * __init__.py
+  * train_pipeline.py
+  * predict_pipeline.py
+
 
