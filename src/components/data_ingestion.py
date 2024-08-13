@@ -19,7 +19,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component")
         try:
-            df = pd.read_csv('notebook/data/stud.csv')
+            df = pd.read_csv('../../notebook/data/stud.csv')
             logging.info('Read the dataset as dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
@@ -40,8 +40,10 @@ class DataIngestion:
                 self.ingestion_config.test_data_path
             )
         except Exception as e:
+            pass
             raise CustomException(e, sys)
 
 if __name__ == "__main__":
     obj = DataIngestion()
     obj.initiate_data_ingestion()
+
