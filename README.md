@@ -7,7 +7,7 @@
 ## create envienvironment 
 `conda create --name IBMDB`
 
-2. # create setup.py file
+# 2. create setup.py file
 
 ## why to use setup.py file in machine learning project
 * it is set of instructions
@@ -23,7 +23,8 @@
 
 4. # create requirements.txt
     * ## -e stand for specifies that the package should be installed in editable mode.
-    * ## and . for current directory)
+    * ## and . for current directory
+    * both are use in `pip` not in `conda` (for conda: Remove the -e . line)
 ```
 pandas
 numpy
@@ -33,8 +34,8 @@ scikit-learn
 -e .
 ``` 
 
-5. # now run '''python setup.py install''' in cmd of youyour virtual environment
-   ## now you can use '''pip freeze'''
+5. # now run `python setup.py install` in cmd of youyour virtual environment
+   ## now you can use `pip freeze > requirements.txt` for conda `conda list --export > requirements.txt`
 
 # project stucture, logging and exceptionn handling 
 
