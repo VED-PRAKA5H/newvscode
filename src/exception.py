@@ -26,10 +26,13 @@ def error_message_detail(error, error_detail: sys):
     
     return error_message  # Return the formatted error message
 
+
+
+
 class CustomException(Exception):
     """Custom exception class to handle errors."""
     
-    def __init__(self, error_message, error_detail: sys):
+    def __init__(self, error_message: Exception, error_detail: sys):
         """
         Initializes the CustomException with a detailed error message.
 
@@ -37,7 +40,7 @@ class CustomException(Exception):
             error_message (str): The error message to be logged.
             error_detail (sys): The sys module, used to extract traceback information.
         """
-        super().__init__(error_message)  # Call the base class constructor
+        super().__init__(str(error_message))  # Call the base class constructor
         # Get the detailed error message using the error_message_detail function
         self.error_message = error_message_detail(error_message, error_detail=error_detail)
 

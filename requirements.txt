@@ -7,5 +7,5 @@ dill~=0.3.8
 catboost~=1.2.3
 flask~=3.0.3
 setuptools~=69.2.0
--e .
 xgboost~=2.0.3
+-e .
