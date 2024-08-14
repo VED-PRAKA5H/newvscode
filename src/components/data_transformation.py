@@ -71,7 +71,7 @@ class DataTransformation:
 
         except Exception as e:
             # Raise a custom exception if an error occurs
-            raise CustomException(e, sys)
+            raise CustomException(str(e), sys)
 
     def initiate_data_transformation(self, train_path, test_path):
         """Load data, apply transformations, and return the transformed data."""
@@ -126,5 +126,7 @@ class DataTransformation:
 
         except Exception as e:
             # Raise a custom exception if an error occurs
-            raise CustomException(e, sys)
+            raise CustomException(str(e), sys)
+
+
 
