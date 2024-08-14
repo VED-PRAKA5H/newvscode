@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Information Form</h2>
+        <form action="/submit" method="post">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="ethnicity">Race/Ethnicity:</label>
+            <select id="ethnicity" name="ethnicity" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+
+            <label for="parental_level_of_education">Parental Level of Education:</label>
+            <select id="parental_level_of_education" name="parental_level_of_education" required>
+                <option value="high_school">High School</option>
+                <option value="higher_secondary">Higher Secondary</option>
+                <option value="bachelor">Bachelor</option>
+                <option value="masters">Masters</option>
+            </select>
+
+            <label for="lunch">Lunch:</label>
+            <input type="text" id="lunch" name="lunch" required>
+
+            <label for="test_preparation_course">Test Preparation Course:</label>
+            <input type="text" id="test_preparation_course" name="test_preparation_course" required>
+
+            <label for="writing_score">Writing Score:</label>
+            <input type="number" id="writing_score" name="writing_score" required>
+
+            <label for="reading_score">Reading Score:</label>
+            <input type="number" id="reading_score" name="reading_score" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
