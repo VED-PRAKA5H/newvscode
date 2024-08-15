@@ -10,7 +10,15 @@ from sklearn.metrics import r2_score  # Import r2_score for model evaluation
 from src.exception import CustomException
 from sklearn.model_selection import GridSearchCV
 
-def save_object(file_path, obj):
+
+# Example object to serialize
+data = {
+    'name': 'Alice',
+    'age': 30,
+    'skills': ['Python', 'Data Science', 'Machine Learning']
+}
+
+def load_object(file_path, obj):
     """
     Saves an object to a specified file path using the dill library.
 

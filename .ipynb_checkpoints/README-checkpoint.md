@@ -228,27 +228,82 @@ class DataTransformation:
             raise CustomException(e, sys)
 ```
 
-# util.py
+# utils.py
 ```
-# utils is used for common functions
+# utils.py
+# This module contains common utility functions used throughout the project
+
 import os
 import sys
-import numpy as np  # Corrected alias for numpy
+import numpy as np
 import pandas as pd
-import dill  # Removed incorrect alias
+import dill
+from sklearn.metrics import r2_score  # Import r2_score for model evaluation
 from src.exception import CustomException
 
 def save_object(file_path, obj):
-    """Saves an object to a specified file path using dill."""
+    """
+    Saves an object to a specified file path using the dill library.
+
+    Args:
+        file_path (str): The file path where the object will be saved.
+        obj (object): The object to be saved.
+
+    Raises:
+        CustomException: If an exception occurs during the saving process.
+    """
     try:
+        # Get the directory path from the file path
         dir_path = os.path.dirname(file_path)
         
-        os.makedirs(dir_path, exist_ok=True)  # Corrected the usage of os.makedirs
+        # Create the directory if it doesn't exist
+        os.makedirs(dir_path, exist_ok=True)
         
+        # Open the file in binary write mode
         with open(file_path, "wb") as file_obj:
-            dill.dump(obj, file_obj)  # Corrected indentation
+            # Use dill to dump the object to the file
+            dill.dump(obj, file_obj)
     except Exception as e:
-        raise CustomException(e, sys)  # Raising custom exception
+        # Raise a custom exception with the original exception and system information
+        raise CustomException(e, sys)
+
+def evaluate_models(X_train, y_train, X_test, y_test, models):
+    """
+    Evaluates multiple machine learning models and returns their performance scores.
+
+    Args:
+        X_train (np.ndarray): Training feature data.
+        y_train (np.ndarray): Training target data.
+        X_test (np.ndarray): Testing feature data.
+        y_test (np.ndarray): Testing target data.
+        models (dict): A dictionary of models to evaluate.
+
+    Returns:
+        dict: A dictionary containing model names and their corresponding test scores.
+
+    Raises:
+        CustomException: If an exception occurs during model evaluation.
+    """
+    try:
+        report = {}
+        for i in range(len(list(models))):
+            model = list(models.values())[i]  # Get the model
+            model.fit(X_train, y_train)  # Train the model
+            
+            # Make predictions
+            train_predictions = model.predict(X_train)  # Predict on training data
+            test_predictions = model.predict(X_test)  # Predict on testing data
+            
+            # Calculate R² scores
+            train_model_score = r2_score(y_train, train_predictions)
+            test_model_score = r2_score(y_test, test_predictions)
+            
+            # Store the test score in the report
+            report[list(models.keys())[i]] = test_model_score
+        
+        return report  # Return the report with model scores
+    except Exception as e:
+        raise CustomException(e, sys)  # Raise a custom exception if an error occurs
 
 ```
 
@@ -336,4 +391,61 @@ class ModelTrainer:  # Corrected class name
             # Raise a custom exception if an error occurs
             raise CustomException(e, sys)
 ```
+
+## adding parameters in model_trainer.py
+```
+params = {
+
+                "Decision Tree": {
+                    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson"],
+                    # 'splitter': ['best','random'],
+                    # 'max_features': ['sqrt', 'log2'],
+                },
+                "Random Forest":{
+                    # 'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # 'max_features': ['sqrt', 'log2', None],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Gradient Boosting":{
+                    #'loss': ['squared_error', 'huber', 'absolute_error', 'quantile'],
+                    'learning_rate': [.1,.01,.05,.001],
+                    'subsample': [0.6,0.7,0.75,0.8,0.85,0.9],
+                    # 'criterion': ['squared_error', 'friedman_mse'],
+                    # 'max_features': ['auto', 'sqrt', 'log2'],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Linear Regression":{},
+                "XGBRegressor": {
+                    'learning_rate': [.1,.01,.05,.001],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "CatBoosting Regressor": {
+                    'depth': [6,8,10],
+                    'learning_rate': [0.01, 0.05, 0.1],
+                    'iterations': [30, 50, 100]
+                },
+                "AdaBoost Regressor":{'learning_rate': [.1,.01,0.5,.001],
+                    #'loss': ['linear', 'square', 'exponential'],
+                    'n_estimators': [8,16,32,64,128,256]
+                }
+                
+            }
+```
+## now modify your utils by importing `params`
+
+## Create prediction pipeline using Flask Web App
+1. create app.py file in main folder and also install flask
+2. create templates folder
+
+
+## prediction_pipeline
+
+
+# order to run python file
+1.`python setup.py install`
+2. `logger.py`
+3.  `exception.py`
+4.  `predict_pipeline.py`
+5.  `app.py`
+6.  
 

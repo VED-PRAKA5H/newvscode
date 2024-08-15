@@ -9,7 +9,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler  # Import prepro
 from src.exception import CustomException  # Import custom exception for error handling
 from src.logger import logging  # Import logging for tracking events
 import os  # Import os for operating system dependent functionality
-from src.utils import save_object  # Import utility function to save objects
+from src.utils import load_object  # Import utility function to load objects
 
 
 @dataclass
@@ -71,7 +71,7 @@ class DataTransformation:
 
         except Exception as e:
             # Raise a custom exception if an error occurs
-            raise CustomException(str(e), sys)
+            raise CustomException(e, sys)
 
     def initiate_data_transformation(self, train_path, test_path):
         """Load data, apply transformations, and return the transformed data."""
@@ -113,7 +113,7 @@ class DataTransformation:
             logging.info("Saved preprocessing object.")
 
             # Save the preprocessor object to a file
-            save_object(
+            load_object(
                 file_path=self.data_transformation_config.preprocessor_obj_file_path, 
                 obj=preprocessing_obj
             )
@@ -126,7 +126,7 @@ class DataTransformation:
 
         except Exception as e:
             # Raise a custom exception if an error occurs
-            raise CustomException(str(e), sys)
+            raise CustomException(e, sys)
 
 
 

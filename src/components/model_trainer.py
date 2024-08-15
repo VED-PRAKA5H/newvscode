@@ -16,12 +16,12 @@ from xgboost import XGBRegressor
 from sklearn.tree import DecisionTreeRegressor
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import save_object, evaluate_models
+from src.utils import load_object, evaluate_models
 
 @dataclass
 class ModelTrainerConfig:
     """Configuration class for model training settings."""
-    trained_model_file_path = os.path.join("artifacts", "model.pkl")  # Path to save the trained model
+    trained_model_file_path = os.path.join("./artifacts", "model.pkl")  # Path to save the trained model
 
 class ModelTrainer:
     def __init__(self):
@@ -106,7 +106,7 @@ class ModelTrainer:
             
             logging.info("Best found model on both training and testing dataset")
             # Save the best model to a file
-            save_object(
+            load_object(
                 file_path=self.model_trainer_config.trained_model_file_path, obj=best_model
             )
             
@@ -118,7 +118,7 @@ class ModelTrainer:
             return r2_square  # Return the R² score
         except Exception as e:
             # Raise a custom exception if an error occurs
-            raise CustomException(str(e), sys)
+            raise CustomException(e, sys)
 
 
 

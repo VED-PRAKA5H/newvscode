@@ -1,11 +1,11 @@
-student_id,name,age,grade,score
-1,John Doe,15,10,85
-2,Jane Smith,14,9,90
-3,Bob Johnson,16,11,75
-4,Alice Williams,15,10,95
-5,Charlie Brown,14,9,80
-6,Daisy Miller,16,11,88
-7,Ethan Davis,15,10,92
-8,Grace Lee,14,9,78
-9,Henry Wilson,16,11,85
-10,Isabella Taylor,15,10,91
+Gender,Race/Ethnicity,Parental Level of Education,Lunch,Test Preparation Course,Writing Score,Reading Score
+female,group B,bachelor's degree,standard,none,74,72
+male,group C,some college,free/reduced,completed,88,95
+female,group A,master's degree,standard,none,93,90
+male,group D,associate's degree,free/reduced,none,64,67
+female,group E,high school,standard,completed,78,83
+male,group B,some high school,free/reduced,none,58,60
+female,group C,bachelor's degree,standard,completed,85,87
+male,group A,master's degree,free/reduced,none,70,75
+female,group D,some college,standard,completed,92,89
+male,group E,high school,free/reduced,none,65,68

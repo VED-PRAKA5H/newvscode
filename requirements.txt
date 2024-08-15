@@ -1,11 +1,11 @@
-pandas~=2.2.1
-numpy~=1.26.4
+pandas
+numpy
 matplotlib
 seaborn
-scikit-learn~=1.5.1
-dill~=0.3.8
-catboost~=1.2.3
-flask~=3.0.3
-setuptools~=69.2.0
-xgboost~=2.0.3
--e .
+scikit-learn
+dill
+catboost
+flask
+setuptools
+xgboost
+

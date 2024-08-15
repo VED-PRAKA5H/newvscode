@@ -433,13 +433,20 @@ params = {
 ```
 ## now modify your utils by importing `params`
 
-# Create prediction pipeline using Flask Web App
+## Create prediction pipeline using Flask Web App
 1. create app.py file in main folder and also install flask
 2. create templates folder
 
 
-# prediction_pipeline
+## prediction_pipeline
 
 
-
-
+# order to run python file
+1. `python setup.py install`
+2. `pip freeze`
+3. `logger.py`
+4. `exception.py`
+5. `data_ingestion.py`
+6. `predict_pipeline.py`
+7. `model_trainer.py`
+8. `app.py`

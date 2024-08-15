@@ -1,0 +1,11 @@
+newvscode/
+│
+└───src/
+    │
+    ├───pipeline/
+    │      │   predict_pipeline.py
+    │      │   __init__.py
+    │
+    ├──   __init__.py
+    │   
+    └───utils.py  

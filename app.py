@@ -53,3 +53,4 @@ def predict_datapoint():
 # Run the application
 if __name__ == "__main__":  # Corrected variable name
     app.run(host="0.0.0.0")  # Run the app on all available interfaces
+
